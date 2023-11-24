@@ -1,11 +1,25 @@
 <?php
 
+include_once("./app/database/connect.php");
+
 if(isset($_POST["submitButton"])) {
     $username = $_POST["username"];
     var_dump($username);
     $body = $_POST["body"];
     var_dump($body);
 }
+
+$comment_array = array();
+
+//　データ取得
+$sql = "SELECT * FROM comment";
+
+$statement = $pdo->prepare($sql);
+$statement->execute();
+
+$comment_array = $statement;
+
+var_dump($comment_array->fetchObject());
 
 ?>
 
